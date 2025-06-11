@@ -1,0 +1,10 @@
+merge-the-tools : Split a string into equal parts of length and Convert each parts by removing any subsequent occurrences of non-distinct
+
+def merge_the_tools(string, k):
+    for i in range(0, len(string), k):
+        t = string[i:i+k]
+        u = ''
+        for char in t:
+            if char not in u:
+                u += char
+        print(u)
