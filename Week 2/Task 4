@@ -1,0 +1,17 @@
+alphabet-rangoli : pattern printing with the help of alphabets
+
+
+def print_rangoli(size):
+    import string
+
+    alphabet = string.ascii_lowercase
+    lines = []
+
+    for i in range(size):
+        left = alphabet[size-1:i:-1]   
+        center = alphabet[i:size]       
+        row = '-'.join(left + center)   
+        lines.append(row.center(4*size - 3, '-'))
+
+    full_rangoli = lines[::-1] + lines[1:]
+    print('\n'.join(full_rangoli))
