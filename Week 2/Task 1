@@ -1,0 +1,10 @@
+Capitalize : Task to make the first letter of every words as capital
+
+def solve(s):
+    result = []
+    for word in s.split(" "):
+        if word:
+            result.append(word[0].upper() + word[1:])
+        else:
+            result.append("")
+    return " ".join(result)
