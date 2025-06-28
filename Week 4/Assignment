@@ -1,12 +1,12 @@
-Weather Observation Station 8 : Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths
+Weather Observation Station 8 : Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths :-
 Select distinct City from Station where Lower(Substr(City, 1, 1)) IN ('a', 'e', 'i', 'o', 'u') AND Lower(Substr(City, -1)) IN ('a', 'e', 'i', 'o', 'u');
 
 
-Population Density Difernece : Query the difference between the maximum and minimum populations in CITY
+Population Density Difernece : Query the difference between the maximum and minimum populations in CITY :-
 Select max(population) - min(population) As Population_difference from city
 
 
-Weather Observation Station 19 : Query the Euclidean Distance between points and and format your answer to display decimal digits.
+Weather Observation Station 19 : Query the Euclidean Distance between points and and format your answer to display decimal digits :-
 SELECT ROUND(Sqrt(Power(MAX(LAT_N) - MIN(LAT_N), 2) + Power(MAX(LONG_W) - MIN(LONG_W), 2)),4) AS EuclideanDistance FROM STATION;
 
 
@@ -14,11 +14,11 @@ Weather Observation Station 20 :Query the median of the Northern Latitudes (LAT_
 
 
 
-African Cities : Query the names of all cities where the CONTINENT is 'Africa'.
+African Cities : Query the names of all cities where the CONTINENT is 'Africa' :-
 SELECT CITY.Name FROM CITY JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code WHERE COUNTRY.Continent = 'Africa';
 
 
-Report : Write a SQL Query to create a report
+Report : Write a SQL Query to create a report :-
 SELECT
   CASE
     WHEN G.Grade < 8 THEN 'NULL'
@@ -37,7 +37,7 @@ ORDER BY
 
 
 
-Top Compettitors : Write SQL Query to find out top competitors
+Top Compettitors : Write SQL Query to find out top competitors :-
 SELECT s.hacker_id, h.name
 FROM Submissions s
 JOIN Challenges c ON s.challenge_id = c.challenge_id
@@ -50,7 +50,7 @@ ORDER BY COUNT(DISTINCT s.challenge_id) DESC, s.hacker_id;
 
 
 
-Ollivander's Inventory : Question based on Joins
+Ollivander's Inventory : Question based on Joins :-
 SELECT w.id, wp.age, w.coins_needed, w.power
 FROM Wands w
 JOIN Wands_Property wp ON w.code = wp.code
@@ -67,7 +67,7 @@ ORDER BY w.power DESC, wp.age DESC;
 
 
 
-Contest Leaderboard : Question based on joins
+Contest Leaderboard : Question based on joins :-
 SELECT s.hacker_id, h.name, SUM(max_score) AS total_score
 FROM (
     SELECT hacker_id, challenge_id, MAX(score) AS max_score
