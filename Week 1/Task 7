@@ -1,15 +1,14 @@
-from itertools import combinations
+from math import comb
 
 N = int(input())
-letters = list(input().strip())
+letters = input().strip().split()
 K = int(input())
+a_count = letters.count('a')
 
-total_combos = list(combinations(range(N), K))
-count = 0
-a_indices = {i for i, ch in enumerate(letters) if ch == 'a'}
-
-for combo in total_combos:
-    if a_indices.intersection(combo):
-        count += 1
-prob = count / len(total_combos) if total_combos else 0
-print(f"{prob:.4f}")
+if a_count == 0:
+    print("0.0000")
+else:
+    total_combos = comb(N, K)
+    bad_combos = comb(N - a_count, K) if K <= N - a_count else 0
+    prob = 1 - (bad_combos / total_combos)
+    print("{0:.4f}".format(prob))
