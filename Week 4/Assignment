@@ -11,6 +11,17 @@ SELECT ROUND(Sqrt(Power(MAX(LAT_N) - MIN(LAT_N), 2) + Power(MAX(LONG_W) - MIN(LO
 
 
 Weather Observation Station 20 :Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to decimal places.
+SELECT ROUND(AVG(LAT_N), 4) AS median
+FROM (
+    SELECT LAT_N
+    FROM (
+        SELECT LAT_N, 
+               ROW_NUMBER() OVER (ORDER BY LAT_N) AS rn,
+               COUNT(*) OVER () AS total
+        FROM STATION
+    ) AS numbered
+    WHERE rn IN (FLOOR((total + 1) / 2), CEIL((total + 1) / 2))
+) AS median_rows;
 
 
 
