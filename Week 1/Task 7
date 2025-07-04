@@ -1,1 +1,15 @@
-Error
+from itertools import combinations
+
+N = int(input())
+letters = list(input().strip())
+K = int(input())
+
+total_combos = list(combinations(range(N), K))
+count = 0
+a_indices = {i for i, ch in enumerate(letters) if ch == 'a'}
+
+for combo in total_combos:
+    if a_indices.intersection(combo):
+        count += 1
+prob = count / len(total_combos) if total_combos else 0
+print(f"{prob:.4f}")
