@@ -1,4 +1,4 @@
-Schedule Trigger (Time-Based Automation)
+Step 1: Schedule Trigger (Time-Based Automation)
 
 Apache Airflow:
 from airflow import DAG
@@ -19,7 +19,7 @@ task = PythonOperator(task_id='run_etl', python_callable=process_data, dag=dag)
 
 
 
-Event Trigger (File/DB-based Automation)
+Step 2: Event Trigger (File/DB-based Automation)
 
 Python + Watchdog:
 from watchdog.observers import Observer
