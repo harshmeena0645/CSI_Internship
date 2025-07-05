@@ -2,7 +2,6 @@ Step 1: Sample SQLite Database Setup
 import sqlite3
 import pandas as pd
 
-# Create a sample SQLite DB and table
 conn = sqlite3.connect('sample.db')
 df = pd.DataFrame({
     'id': [1, 2, 3],
@@ -20,10 +19,8 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from fastavro import writer, parse_schema
 
-# Connect to the database
 conn = sqlite3.connect('sample.db')
 
-# Read data from the table
 df = pd.read_sql_query("SELECT * FROM students", conn)
 conn.close()
 
