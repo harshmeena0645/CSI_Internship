@@ -1,0 +1,39 @@
+Source DB Setup Example
+
+import sqlite3
+conn = sqlite3.connect("source.db")
+cursor = conn.cursor()
+
+cursor.execute("CREATE TABLE IF NOT EXISTS employees (id INTEGER, name TEXT, email TEXT, salary REAL)")
+cursor.execute("INSERT INTO employees VALUES (1, 'Alice', 'alice@mail.com', 50000), (2, 'Bob', 'bob@mail.com', 60000)")
+
+cursor.execute("CREATE TABLE IF NOT EXISTS departments (id INTEGER, dept_name TEXT, location TEXT)")
+cursor.execute("INSERT INTO departments VALUES (101, 'HR', 'Jaipur'), (102, 'IT', 'Delhi')")
+
+conn.commit()
+conn.close()
+
+
+
+Copy Selective Tables & Columns
+
+import sqlite3
+import pandas as pd
+
+source_conn = sqlite3.connect("source.db")
+dest_conn = sqlite3.connect("destination.db")
+
+tables_to_copy = {
+    'employees': ['id', 'name'],  # Only id and name, skip email and salary
+    'departments': ['dept_name']  # Only department name
+}
+
+for table, columns in tables_to_copy.items():
+    col_str = ", ".join(columns)
+    query = f"SELECT {col_str} FROM {table}"
+    df = pd.read_sql_query(query, source_conn)
+    df.to_sql(table, dest_conn, if_exists='replace', index=False)
+    print(f"Copied table: {table} with columns: {columns}")
+
+source_conn.close()
+dest_conn.close()
