@@ -1,4 +1,4 @@
-Source DB Setup Example
+Step 1: Source DB Setup Example
 
 import sqlite3
 conn = sqlite3.connect("source.db")
@@ -15,7 +15,7 @@ conn.close()
 
 
 
-Copy Selective Tables & Columns
+Step 2: Copy Selective Tables & Columns
 
 import sqlite3
 import pandas as pd
