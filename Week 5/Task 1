@@ -1,5 +1,4 @@
 Step 1: Sample SQLite Database Setup
-
 import sqlite3
 import pandas as pd
 
@@ -15,7 +14,6 @@ conn.close()
 
 
 Step 2: Extract Data and Export to CSV, Parquet, Avro
-
 import pandas as pd
 import sqlite3
 import pyarrow as pa
