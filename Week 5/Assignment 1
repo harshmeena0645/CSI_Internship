@@ -1,0 +1,57 @@
+Step 1: Sample SQLite Database Setup
+
+import sqlite3
+import pandas as pd
+
+# Create a sample SQLite DB and table
+conn = sqlite3.connect('sample.db')
+df = pd.DataFrame({
+    'id': [1, 2, 3],
+    'name': ['Harsh', 'Ankush', 'Kajal'],
+    'score': [85.5, 78.0, 95.0]
+})
+df.to_sql('students', conn, if_exists='replace', index=False)
+conn.close()
+
+
+Step 2: Extract Data and Export to CSV, Parquet, Avro
+
+import pandas as pd
+import sqlite3
+import pyarrow as pa
+import pyarrow.parquet as pq
+from fastavro import writer, parse_schema
+
+# Connect to the database
+conn = sqlite3.connect('sample.db')
+
+# Read data from the table
+df = pd.read_sql_query("SELECT * FROM students", conn)
+conn.close()
+
+# Export to CSV
+df.to_csv("students.csv", index=False)
+
+# Export to Parquet
+table = pa.Table.from_pandas(df)
+pq.write_table(table, "students.parquet")
+
+# Export to Avro
+records = df.to_dict(orient='records')
+
+schema = {
+    "doc": "Student records",
+    "name": "Student",
+    "namespace": "example.avro",
+    "type": "record",
+    "fields": [
+        {"name": "id", "type": "int"},
+        {"name": "name", "type": "string"},
+        {"name": "score", "type": "float"}
+    ]
+}
+
+parsed_schema = parse_schema(schema)
+
+with open("students.avro", "wb") as out:
+    writer(out, parsed_schema, records)
