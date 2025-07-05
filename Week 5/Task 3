@@ -1,4 +1,4 @@
-Create Example Source Database
+Step 1: Create Example Source Database
 
 import sqlite3
 src_conn = sqlite3.connect('source.db')
@@ -15,7 +15,7 @@ src_conn.close()
 
 
 
-Copy All Tables to Destination Database
+Step 2: Copy All Tables to Destination Database
 
 import pandas as pd
 import sqlite3
