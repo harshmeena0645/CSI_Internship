@@ -1,0 +1,17 @@
+{
+  "name": "FTP_LinkedService",
+  "type": "Microsoft.DataFactory/factories/linkedservices",
+  "properties": {
+    "type": "FtpServer",
+    "typeProperties": {
+      "host": "ftp://fakeftp.com",
+      "port": 21,
+      "authenticationType": "Basic",
+      "userName": "ftpuser",
+      "password": {
+        "type": "SecureString",
+        "value": "ftppass"
+      }
+    }
+  }
+}
