@@ -1,0 +1,21 @@
+{
+  "name": "Pipeline_Local_To_SQL",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyLocalToSQL",
+        "type": "Copy",
+        "inputs": [{ "referenceName": "LocalFileDataset" }],
+        "outputs": [{ "referenceName": "SQLDataset" }],
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource"
+          },
+          "sink": {
+            "type": "SqlSink"
+          }
+        }
+      }
+    ]
+  }
+}

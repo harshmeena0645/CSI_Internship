@@ -1,0 +1,28 @@
+{
+  "name": "Incremental_Load_Pipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "GetLastDate",
+        "type": "Lookup",
+        "typeProperties": {
+          "query": "SELECT MAX(sale_date) as LastLoadDate FROM watermark_table"
+        }
+      },
+      {
+        "name": "CopyNewRecords",
+        "type": "Copy",
+        "dependsOn": [{ "activity": "GetLastDate", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "source": {
+            "type": "SqlSource",
+            "sqlReaderQuery": "SELECT * FROM sales_data WHERE sale_date > '@{activity('GetLastDate').output.firstRow.LastLoadDate}'"
+          },
+          "sink": {
+            "type": "SqlSink"
+          }
+        }
+      }
+    ]
+  }
+}

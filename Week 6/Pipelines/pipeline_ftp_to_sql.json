@@ -1,0 +1,21 @@
+{
+  "name": "Pipeline_FTP_To_SQL",
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyFTPToSQL",
+        "type": "Copy",
+        "inputs": [{ "referenceName": "FTPInputDataset" }],
+        "outputs": [{ "referenceName": "SQLDataset" }],
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource"
+          },
+          "sink": {
+            "type": "SqlSink"
+          }
+        }
+      }
+    ]
+  }
+}
