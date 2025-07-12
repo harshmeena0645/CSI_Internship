@@ -1,0 +1,20 @@
+{
+  "name": "Trigger_Last_Saturday",
+  "properties": {
+    "recurrence": {
+      "frequency": "Month",
+      "interval": 1,
+      "schedule": {
+        "monthlyOccurrences": [
+          {
+            "day": "Saturday",
+            "week": -1
+          }
+        ],
+        "hours": [10],
+        "minutes": [0],
+        "timeZone": "India Standard Time"
+      }
+    }
+  }
+}
