@@ -1,9 +1,0 @@
-
----
-
-### 📄 `requirements.txt`
-
-```txt
-pyspark==3.3.2
-delta-spark==2.1.0
-findspark
