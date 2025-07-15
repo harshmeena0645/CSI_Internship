@@ -1,0 +1,10 @@
+# Delta Output Directory
+
+This folder contains the final joined output written in Delta format.
+
+- It is the result of joining customer master files with order files.
+- Written in Delta format to: `/content/output/delta_output/joined_output`
+
+To view this Delta table:
+```python
+spark.read.format("delta").load("/content/output/delta_output/joined_output").show()

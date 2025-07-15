@@ -1,0 +1,8 @@
+
+## Output Schema
+| id | name | city | order_id | amount | cust_file_date | order_file_date |
+
+## How to Run
+Run the PySpark script:
+```bash
+python pyspark_etl_join.py
