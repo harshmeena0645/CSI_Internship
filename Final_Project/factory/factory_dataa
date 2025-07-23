@@ -1,0 +1,9 @@
+{
+	"name": "FactoryDataa",
+	"location": "eastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0cd0865e-9bb6-4ecf-9f10-7e01a8f6958f",
+		"tenantId": "ea85348f-56b3-4d3b-9b83-233442bcb120"
+	}
+}
