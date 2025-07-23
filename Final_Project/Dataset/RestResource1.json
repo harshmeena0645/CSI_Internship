@@ -1,19 +1,16 @@
 {
-	"name": "Json1",
+	"name": "RestResource1",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureDataLakeStorage1",
+			"referenceName": "RestService2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "Json",
+		"type": "RestResource",
 		"typeProperties": {
-			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileSystem": "newcontaimer"
-			}
+			"relativeUrl": "@concat('/v3.1/name/', pipeline().parameters.countryName)"
 		},
-		"schema": {}
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
