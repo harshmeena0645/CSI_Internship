@@ -37,7 +37,7 @@ Go to Triggers > New/Edit > Schedule Trigger
 Set the Recurrence to Daily
 
 Choose time:
-12:00 AM IST \n
+12:00 AM IST, 
 12:00 PM IST
 
 Attach this trigger to the country data pipeline.
