@@ -1,44 +1,36 @@
-✅ Project Title:
+# ✅ Project Title:
 Multi-Country Data Pipeline with Conditional Child Triggering using Azure Data Factory
 
-🔧 Tools Required:
+
+## 🔧 Tools Required:
 Azure Data Factory
-
 Azure Data Lake Storage Gen2
-
 Azure SQL Database (for simulating DB data)
-
 REST API (https://restcountries.com/v3.1/name/{name})
-
 Postman (for initial testing of API)
-
 Dataset Creation using mock data for Customer and Product tables (can be provided in CSV or SQL format)
 
-🧾 Problem Statement Breakdown & Solution:
-📌 1. Fetch Country Data from API and Save to JSON Files
+
+#🧾 Problem Statement Breakdown & Solution:
+
+#📌 1. Fetch Country Data from API and Save to JSON Files
 ✔ Steps:
 Use Web activity in ADF to call the REST API:
-
-bash
-Copy
-Edit
 https://restcountries.com/v3.1/name/{Country}
+
 Use ForEach activity to loop through countries: ["india", "us", "uk", "china", "russia"].
 
 Inside the loop:
-
 Use Web Activity to fetch API.
-
 Use Copy Activity to save the output to ADLS in JSON format.
-
 Filename should be like india.json, us.json, etc.
 
 ✔ Datasets:
 Source: REST API (via Web activity)
-
 Sink: ADLS Gen2 (Linked Service required)
 
-📌 2. Add Trigger to Run Pipeline 2 Times a Day
+
+## 📌 2. Add Trigger to Run Pipeline 2 Times a Day
 ✔ Steps:
 Go to Triggers > New/Edit > Schedule Trigger
 
