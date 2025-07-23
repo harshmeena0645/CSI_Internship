@@ -1,0 +1,39 @@
+{
+	"name": "CountryTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "GetCountriesPipeline",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"countryList": [
+						"india",
+						"us",
+						"uk",
+						"china",
+						"russia"
+					]
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "CopyCustomerPipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 12,
+				"startTime": "2025-05-31T12:21:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
